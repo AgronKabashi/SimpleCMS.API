@@ -167,11 +167,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.confi">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\TemplateEngine.Backend\Web\Cerberus.Tool.TemplateEngine.Web.csproj">
       <Project>{a308311b-e9d8-4dcc-86db-e6dcdaff6330}</Project>
       <Name>Cerberus.Tool.TemplateEngine.Web</Name>
