@@ -9,8 +9,16 @@ using System.Web.Http;
 
 namespace SimpleCMS.API.Controllers
 {
+	[Authorize(Roles = "Administrators,AdministrateTemplates,CreateTemplates")]
 	public class TemplateInfoController : ApiController
 	{
+		[AllowAnonymous]
+		public HttpResponseMessage Options()
+		{
+			return Request.CreateResponse(HttpStatusCode.OK);
+		}
+
+		[AllowAnonymous]
 		public TemplateViewModel Get(int id)
 		{
 			return TemplateViewModel.CreateFromModel(TemplateManager.TemplateService.GetTemplate(id));

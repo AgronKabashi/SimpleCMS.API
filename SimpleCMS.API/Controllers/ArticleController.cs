@@ -5,13 +5,16 @@ using System.Web.Http;
 
 namespace SimpleCMS.API.Controllers
 {
+	[Authorize(Roles = "Administrators,AdministrateArticles,CreateArticles")]
 	public class ArticleController : ApiController
 	{
+		[AllowAnonymous]
 		public HttpResponseMessage Options()
 		{
 			return Request.CreateResponse(HttpStatusCode.OK);
 		}
-		
+
+		[AllowAnonymous]
 		public Article Get(int id)
 		{
 			return CMSManager.ArticleService.GetArticle(id);

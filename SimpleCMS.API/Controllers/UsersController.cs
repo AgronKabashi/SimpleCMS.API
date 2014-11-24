@@ -3,6 +3,7 @@ using System.Web.Http;
 
 namespace SimpleCMS.API.Controllers
 {
+	[Authorize(Roles = "Administrators,AdministrateUsers")]
     public class UsersController : ApiController
     {
 		public UserCollection Get()

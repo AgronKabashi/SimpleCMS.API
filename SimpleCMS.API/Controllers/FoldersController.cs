@@ -8,6 +8,7 @@ using System.Web.Http;
 
 namespace SimpleCMS.API.Controllers
 {
+	[Authorize(Roles = "Administrators,AdministrateArticles,CreateArticles")]
     public class FoldersController : ApiController
     {
 		public FolderCollection Get(int id)

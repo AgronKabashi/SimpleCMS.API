@@ -5,18 +5,22 @@ using System.Web.Http;
 
 namespace SimpleCMS.API.Controllers
 {
+	[Authorize(Roles = "Administrators,AdministrateUsers")]
     public class UserController : ApiController
     {
+		[AllowAnonymous]
 		public HttpResponseMessage Options()
 		{
 			return Request.CreateResponse(HttpStatusCode.OK);
 		}
 
+		[AllowAnonymous]
 		public User Get(int id)
 		{
 			return CoreManager.UserService.GetUser(id);
 		}
 
+		[AllowAnonymous]
 		public User Get(string username, string password)
 		{
 			return CoreManager.UserService.GetUser(username, password);

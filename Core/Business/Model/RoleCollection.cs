@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Cerberus.Core.Business
 {
@@ -31,6 +32,11 @@ namespace Cerberus.Core.Business
 		internal void Save(int userId)
 		{
 			CoreManager.UserService.UpdateUserRoles(userId, this);
+		}
+
+		public IEnumerable<string> GetNames()
+		{
+			return this.Select(role => role.Name);
 		}
 	}
 }

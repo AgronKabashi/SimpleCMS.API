@@ -5,13 +5,16 @@ using System.Web.Http;
 
 namespace SimpleCMS.API.Controllers
 {
+	[Authorize(Roles = "Administrators,AdministrateArticles")]
 	public class FolderController : ApiController
 	{
+		[AllowAnonymous]
 		public HttpResponseMessage Options()
 		{
 			return Request.CreateResponse(HttpStatusCode.OK);
 		}
 
+		[AllowAnonymous]
 		public Folder Get(int id)
 		{
 			return CMSManager.FolderService.GetFolder(id);
