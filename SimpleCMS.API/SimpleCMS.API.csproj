@@ -130,6 +130,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
+    <Compile Include="Controllers\ControlPluginsController.cs" />
     <Compile Include="Controllers\FolderController.cs" />
     <Compile Include="Controllers\FoldersController.cs" />
     <Compile Include="Controllers\TemplateContentController.cs" />
