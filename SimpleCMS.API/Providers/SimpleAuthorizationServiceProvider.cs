@@ -29,7 +29,7 @@ namespace SimpleCMS.API
 			}
 
 			var user = CoreManager.UserService.GetUser(context.UserName, context.Password);
-			
+
 			if (user == null)
 			{
 				context.SetError("invalidarguments", "The user name or password is incorrect.");
@@ -42,7 +42,7 @@ namespace SimpleCMS.API
 						"UserName", user.UserName
 					},
 					{
-						"UserId", user.Id.ToString()
+						"Id", user.Id.ToString()
 					},
 					{
 						"FirstName", user.FirstName
@@ -60,7 +60,7 @@ namespace SimpleCMS.API
 			identity.AddClaim(new Claim(ClaimTypes.Sid, user.Id.ToString()));
 
 			user.Roles.GetNames().ToList().ForEach(role => identity.AddClaim(new Claim(ClaimTypes.Role, role)));
-			
+
 			var ticket = new AuthenticationTicket(identity, properties);
 			context.Validated(ticket);
 			//context.Validated(identity);
