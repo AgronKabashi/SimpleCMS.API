@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
+using Microsoft.AspNet.Identity;
 
 namespace SimpleCMS.API.Controllers
 {
@@ -18,11 +19,11 @@ namespace SimpleCMS.API.Controllers
 		{
 			var searchParameters = this.User.IsInRole("AdministrateTemplates") ? null : new TemplateSearchParameters
 				{
-					CreatedByUserId = int.Parse((this.User.Identity as ClaimsIdentity).Claims.First(claim => claim.Type.Equals(ClaimTypes.Sid)).Value)
+					CreatedByUserId = int.Parse((this.User.Identity as ClaimsIdentity).FindFirstValue(ClaimTypes.Sid))
 				};
 
 			var templates = TemplateManager.TemplateService.GetTemplates(searchParameters);
-			
+
 			var result = new List<TemplateViewModel>();
 			foreach (var template in templates)
 			{

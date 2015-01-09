@@ -9,8 +9,8 @@ using System.Web.Http;
 namespace SimpleCMS.API.Controllers
 {
 	[Authorize(Roles = "Administrators,AdministrateTemplates,CreateTemplates")]
-    public class TemplateController : ApiController
-    {
+	public class TemplateController : ApiController
+	{
 		[AllowAnonymous]
 		public HttpResponseMessage Options()
 		{
@@ -22,19 +22,19 @@ namespace SimpleCMS.API.Controllers
 		{
 			return TemplateManager.TemplateService.GetTemplate(id);
 		}
-
+		[AllowAnonymous]
 		public HttpResponseMessage Put(Template template)
 		{
-			var result = template != null && template.Save(0) ? HttpStatusCode.Created : HttpStatusCode.BadRequest;
+			var result = template != null && template.Save(0, false) ? HttpStatusCode.Created : HttpStatusCode.BadRequest;
 
 			return Request.CreateResponse(result, template);
 		}
 
 		public HttpResponseMessage Delete(int id)
 		{
-			var result = TemplateManager.TemplateService.RemoveTemplate(id) ? HttpStatusCode.OK: HttpStatusCode.BadRequest;
+			var result = TemplateManager.TemplateService.RemoveTemplate(id) ? HttpStatusCode.OK : HttpStatusCode.BadRequest;
 
 			return Request.CreateResponse(result);
 		}
-    }
+	}
 }
