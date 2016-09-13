@@ -1,8 +1,6 @@
 SimpleCMS.API
 =============
 
-WARNING: PRE-ALPHA - BETA RELEASE COMING SOON
-
 This is a backend service for managing users, TemplateEngine templates and content. 
 
 ###Related Projects
